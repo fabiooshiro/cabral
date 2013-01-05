@@ -111,9 +111,11 @@ var cabral = new function(){
 				if(links[i].innerHTML == arguments[0]){
 					actuateLink(links[i]);
 					self.waitFor(links[i].getAttribute('href'), arguments[1]);
-					break;
+					return;
 				}
 			}
+			console.log("Link not found with text '" + arguments[0] + "'.");
+			throw new Error("Link not found with text '" + arguments[0] + "'.");
 		}else if(arguments.length == 1){
 			actuateLink(arguments[0]);
 		}
