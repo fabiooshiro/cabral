@@ -1,4 +1,10 @@
-var cabral = new function(){
+
+
+/**
+ * Cabral the Navigator
+ * @constructor
+ */
+var Cabral = function(){
 
 	var _config = typeof(config) == 'undefined' ? {contextPath: ''} : config;
 
@@ -8,6 +14,9 @@ var cabral = new function(){
 		getWin().confirm = function(){return true};
 	}
 
+	/**
+	   @param {string} frameName - The frame or iframe name for cabral manipulation
+	 */
 	this.setFrameName = function(anFrameName){
 		win = anFrameName;
 	};
@@ -63,6 +72,19 @@ var cabral = new function(){
 		}
 	}
 
+	/**
+	 * Intercepted by TomateGrailsPlugin.groovy
+	 */
+	function defFillFile(el, fileName){
+		var name = el.getAttribute('name')
+		var parent = el.parentNode;
+		var input = getWin().document.createElement('input');
+		input.setAttribute('name', 'tomate_file_' + name);
+		input.setAttribute('value', fileName);
+		input.setAttribute('type', 'hidden');
+		parent.appendChild(input);
+	}
+
 	var regexComparator = function(uri){
 		return uri.exec(getWin().location.href);
 	};
@@ -85,6 +107,15 @@ var cabral = new function(){
 		setTimeout(loadListener, 250);
 	};
 
+	/**
+	 * @param {string} uri - the page to go. eg. '/book/create'
+	 * @param {function} callback - callback function
+	 * @example 
+	 * cabral.navigateTo('/book/create', function($){
+	 *     // $ is a jQuery if present
+	 *     // or is a window
+	 * });
+	 */
 	this.navigateTo = function(uri, callback){
 		if(endsWithComparator(uri)){
 			callCallBack(callback, true);
@@ -94,15 +125,33 @@ var cabral = new function(){
 		}
 	};
 
+	/**
+	 * Wait for a page to load.
+	 * @param {string or regex} uri - the URI to wait for
+	 * @param {function} callback - will be called when page load
+	 * @example
+	 * &lt;form action="/book/save" />
+	 *     &lt;input type="submit" id="create" />
+	 * &lt;/form>
+	 *
+	 * $('#create').click();
+	 * cabral.waitFor('/book/save', function($){
+	 *     // ...
+	 * });
+	 */
 	this.waitFor = function(uri, callback){
 		waitForUrl(uri, (typeof(uri) == 'string' ? endsWithComparator : regexComparator), callback);
 	};
 
 	/**
-	 * Default usage: 
-	 *	 cabral.clickLink('link text', function(winOrJquery){
-	 *
-	 *	 });
+     * Simulate a click &lt;a href="somePage.html">click here&lt;/a>
+	 * @param {string} linkText - eg. click here
+	 * @param {function} callback - Fired on page load
+	 * @example
+	 * cabral.clickLink('click here', function($){
+     *     // evaluate your page
+	 *     var message = $('.message').text();
+	 * });
 	 */
 	this.clickLink = function(){
 		if(arguments.length == 2){
@@ -120,5 +169,26 @@ var cabral = new function(){
 			actuateLink(arguments[0]);
 		}
 	};
-};
+
+	/**
+	 * Pretend to fill a input type file.<br>
+	 * The javascript can't change a value of an input with type "file".<br>
+	 * So Cabral creates a hidden field to send your file name value.<br>
+	 * This value will be intercepted by TomateGrailsPlugin.groovy 
+	 * with a modified version of request.getFile('yourfile.txt') 
+	 * that get that file from &lt;yourapp>/test/resources/yourfile.txt
+	 * @param {element} el - input file tag
+	 * @param {string} fileName - name of your file
+	 * @example
+	 * &lt;input type="file" id="myfile" />
+	 *
+	 * var el = $('#myfile')[0];
+	 * cabral.fillFile(el, 'yourfile.txt') ;
+	 */
+	this.fillFile = function(el, fileName){
+		defFillFile(el, fileName);
+	}
+}
+
+var cabral = new Cabral();
 
