@@ -126,6 +126,11 @@ var Cabral = function(){
 	};
 
 	/**
+	 * alias to navigateTo
+	 */
+	this.go = this.navigateTo
+
+	/**
 	 * Wait for a page to load.
 	 * @param {string or regex} uri - the URI to wait for
 	 * @param {function} callback - will be called when page load
@@ -190,5 +195,5 @@ var Cabral = function(){
 	}
 }
 
-var cabral = new Cabral();
-
+var browser = new Cabral();
+var cabral = browser; // para manter a compatibilidade, deprecated
