@@ -28,11 +28,9 @@ describe("browser cabral should", function(){
 		runs(function(){
 			browser.go('bar.html', function(){
 				console.log("Page bar is loaded");
-
 				console.log("Now click in link foo...");
 				browser.clickLink('foo', function(_win){
 					console.log("Page foo is loaded");
-
 					win = _win;
 					done = true;
 				});

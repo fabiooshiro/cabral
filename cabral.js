@@ -197,3 +197,4 @@ var Cabral = function(){
 
 var browser = new Cabral();
 var cabral = browser; // para manter a compatibilidade, deprecated
+
