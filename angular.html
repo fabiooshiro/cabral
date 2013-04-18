@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Cabral Test Page - Angular.js</title>
+	<script type='text/javascript' src="http://code.jquery.com/jquery-1.8.2.js"></script>
+	<script type="text/javascript" src="angular/angular.js"></script>
+	<script type="text/javascript">
+		function MyCtrl($scope) {
+		    $scope.myName = "no name";
+		    $scope.boolChk = false;
+		}
+	</script>
+</head>
+<body>
+	<div ng-app ng-controller="MyCtrl">
+
+		<h1>Angular.js</h1>
+		<label>Type your name: <input type="text" id="userName" ng-model="myName"/></label>
+		<div>
+			<span id="msg">Hello {{myName}}!</span>
+		</div>
+		<hr />
+		<label><input type="checkbox" class="chkBox" ng-model="boolChk" /> Checkbox</label>
+		<div>
+			Chk <span id="chkBoolean">{{boolChk}}</span>
+		</div>
+		<hr />
+		<pre>
+	it("should change angular $scope", function(){
+		var done, $;
+		runs(function(){
+			cabral.navigateTo('angular.html', function(jq){
+				$ = jq;
+				cabral.set('#userName', 'Sr. Oshiro');
+				cabral.checkbox('.chkBox', true);
+				done = true
+			});
+		});
+
+		waitsFor(function() {
+			return done;
+		}, "The Value should be incremented", 1000);
+
+		runs(function(){
+			expect($('#msg').text()).toBe('Hello Sr. Oshiro!');
+			expect($('#chkBoolean').text()).toBe('true');
+		});
+	});
+		</pre>
+	</div>
+</body>
+</html>

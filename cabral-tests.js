@@ -73,4 +73,26 @@ describe("cabral should", function(){
 		});
 	});
 
+	it("should change an angular model", function(){
+		var done, $;
+		runs(function(){
+			cabral.navigateTo('angular.html', function(jq){
+				$ = jq;
+				console.log("Page angular is loaded");
+				cabral.set('#userName', 'Sr. Oshiro');
+				cabral.checkbox('.chkBox', true);
+				done = true
+			});
+		});
+
+		waitsFor(function() {
+			return done;
+		}, "The Value should be incremented", 1000);
+
+		runs(function(){
+			expect($('#msg').text()).toBe('Hello Sr. Oshiro!');
+			expect($('#chkBoolean').text()).toBe('true');
+		});
+	});
+
 });
