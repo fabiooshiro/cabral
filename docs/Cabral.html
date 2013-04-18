@@ -113,11 +113,207 @@
     
     
     
+        <h3 class="subsection-title">Members</h3>
+        
+        <dl>
+            
+<dt>
+    <h4 class="name" id="go"><span class="type-signature"></span>go<span class="type-signature"></span></h4>
+    
+    
+</dt>
+<dd>
+    
+    <div class="description">
+        alias to navigateTo
+    </div>
+    
+    
+    
+<dl class="details">
+    
+        
+	
+	
+	
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<dt class="tag-source">Source:</dt>
+	<dd class="tag-source"><ul class="dummy"><li>cabral.js, line 131</li></ul></dd>
+	
+    
+    
+	
+	
+	
+	
+</dl>
+
+    
+    
+</dd>
+
+        </dl>
+    
     
     
         <h3 class="subsection-title">Methods</h3>
         
         <dl>
+            
+<dt>
+    <h4 class="name" id="checkbox"><span class="type-signature"></span>checkbox<span class="signature">(selector, Boolean)</span><span class="type-signature"></span></h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        Mark a checkbox and trigger input and change events<br>
+$(selector).attr('checked', true);
+    </div>
+    
+
+    
+    
+    
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>selector</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+            
+            
+            
+            
+            
+            <td class="description last">jQuery selector</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>Boolean</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+            
+            </td>
+            
+            
+            
+            
+            
+            <td class="description last">true or false</td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    
+    
+<dl class="details">
+    
+        
+	
+	
+	
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<dt class="tag-source">Source:</dt>
+	<dd class="tag-source"><ul class="dummy"><li>cabral.js, line 249</li></ul></dd>
+	
+    
+    
+	
+	
+	
+	
+</dl>
+
+    
+    
+    
+    
+    
+    
+    
+    
+        <h5>Example</h5>
+        
+    <pre class="prettyprint"><code>&lt;input type="checkbox" id="myChk" />
+
+cabral.checkbox("#myChk", true);</code></pre>
+
+    
+</dd>
+
+        
             
 <dt>
     <h4 class="name" id="clickLink"><span class="type-signature"></span>clickLink<span class="signature">(linkText, callback)</span><span class="type-signature"></span></h4>
@@ -231,7 +427,7 @@
 	
 	
 	<dt class="tag-source">Source:</dt>
-	<dd class="tag-source"><ul class="dummy"><li>cabral.js, line 156</li></ul></dd>
+	<dd class="tag-source"><ul class="dummy"><li>cabral.js, line 161</li></ul></dd>
 	
     
     
@@ -270,7 +466,7 @@
     
     
     <div class="description">
-        Pretend to fill a input type file.<br>
+        Pretend to fill an input type file.<br>
 The javascript can't change a value of an input with type "file".<br>
 So Cabral creates a hidden field to send your file name value.<br>
 This value will be intercepted by TomateGrailsPlugin.groovy 
@@ -378,7 +574,7 @@ that get that file from &lt;yourapp>/test/resources/yourfile.txt
 	
 	
 	<dt class="tag-source">Source:</dt>
-	<dd class="tag-source"><ul class="dummy"><li>cabral.js, line 188</li></ul></dd>
+	<dd class="tag-source"><ul class="dummy"><li>cabral.js, line 193</li></ul></dd>
 	
     
     
@@ -541,6 +737,148 @@ cabral.navigateTo('/book/create', function($){
     // $ is a jQuery if present
     // or is a window
 });</code></pre>
+
+    
+</dd>
+
+        
+            
+<dt>
+    <h4 class="name" id="set"><span class="type-signature"></span>set<span class="signature">(selector, value)</span><span class="type-signature"></span></h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        Fill an input tag and trigger input and change events<br>
+$(selector).val(value);
+    </div>
+    
+
+    
+    
+    
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>selector</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+            
+            
+            
+            
+            
+            <td class="description last">jQuery selector</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>value</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+            
+            
+            
+            
+            
+            <td class="description last">String value</td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    
+    
+<dl class="details">
+    
+        
+	
+	
+	
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<dt class="tag-source">Source:</dt>
+	<dd class="tag-source"><ul class="dummy"><li>cabral.js, line 229</li></ul></dd>
+	
+    
+    
+	
+	
+	
+	
+</dl>
+
+    
+    
+    
+    
+    
+    
+    
+    
+        <h5>Example</h5>
+        
+    <pre class="prettyprint"><code>&lt;input type="text" id="myField" value="" />
+
+cabral.set("#myField", "some value");</code></pre>
 
     
 </dd>
@@ -766,7 +1104,7 @@ cabral.navigateTo('/book/create', function($){
 	
 	
 	<dt class="tag-source">Source:</dt>
-	<dd class="tag-source"><ul class="dummy"><li>cabral.js, line 142</li></ul></dd>
+	<dd class="tag-source"><ul class="dummy"><li>cabral.js, line 147</li></ul></dd>
 	
     
     
@@ -946,7 +1284,7 @@ cabral.waitFor('/book/save', function($){
 <br clear="both">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3</a> on Sat Jan 19 2013 17:19:44 GMT-0200 (BRST)
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3</a> on Wed Apr 17 2013 23:16:38 GMT-0300 (BRT)
 </footer>
 
 <script> prettyPrint(); </script>
