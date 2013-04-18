@@ -87,7 +87,7 @@ describe("cabral should", function(){
 
 		waitsFor(function() {
 			return done;
-		}, "The Value should be incremented", 1000);
+		}, "The Value should be incremented", 10000);
 
 		runs(function(){
 			expect($('#msg').text()).toBe('Hello Sr. Oshiro!');
