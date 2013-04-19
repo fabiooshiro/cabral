@@ -254,6 +254,23 @@ var Cabral = function(){
 		};
 		return this;
 	}
+
+	this.select = function(selector, label){
+		var $ = getWin().$;
+		var els = $(selector);
+		for (var i = 0; i < els.length; i++) {
+			var options = $(els[i]).find('option');
+			for (var j = 0; j < options.length; j++) {
+				if($(options[j]).text() == label){
+					$(els[i]).val($(options[j]).attr('value'));
+					break;
+				}
+			}
+			fireEvent(els[i], 'change');
+			fireEvent(els[i], 'click');
+		};
+		return this;	
+	}
 }
 
 var browser = new Cabral();

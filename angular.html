@@ -8,6 +8,7 @@
 		function MyCtrl($scope) {
 		    $scope.myName = "no name";
 		    $scope.boolChk = false;
+		    $scope.optionList = [{id: 1, name: 'Opt1'}, {id: 2, name: 'Opt2'}];
 		}
 	</script>
 </head>
@@ -25,28 +26,14 @@
 			Chk <span id="chkBoolean">{{boolChk}}</span>
 		</div>
 		<hr />
-		<pre>
-	it("should change angular $scope", function(){
-		var done, $;
-		runs(function(){
-			cabral.navigateTo('angular.html', function(jq){
-				$ = jq;
-				cabral.set('#userName', 'Sr. Oshiro');
-				cabral.checkbox('.chkBox', true);
-				done = true
-			});
-		});
+		<label>Select 
+			<select class="mySelectCssClass" ng-model="opt" ng-options="e.name for e in optionList">
 
-		waitsFor(function() {
-			return done;
-		}, "The Value should be incremented", 1000);
-
-		runs(function(){
-			expect($('#msg').text()).toBe('Hello Sr. Oshiro!');
-			expect($('#chkBoolean').text()).toBe('true');
-		});
-	});
-		</pre>
+			</select>
+		</label>
+		<div>
+			Opt <span id="selectResult">{{opt.name}}</span>
+		</div>
 	</div>
 </body>
 </html>

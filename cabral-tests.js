@@ -81,6 +81,7 @@ describe("cabral should", function(){
 				console.log("Page angular is loaded");
 				cabral.set('#userName', 'Sr. Oshiro');
 				cabral.checkbox('.chkBox', true);
+				cabral.select('.mySelectCssClass', 'Opt2');
 				done = true
 			});
 		});
@@ -92,6 +93,7 @@ describe("cabral should", function(){
 		runs(function(){
 			expect($('#msg').text()).toBe('Hello Sr. Oshiro!');
 			expect($('#chkBoolean').text()).toBe('true');
+			expect($('#selectResult').text()).toBe('Opt2');
 		});
 	});
 
