@@ -254,6 +254,33 @@ var Cabral = function(){
 		};
 		return this;
 	}
+
+	/**
+	 * Choose a select value by option text/label
+	 * @param {string} selector jQuery selector
+	 * @param {string} label/text option text
+	 * @example
+	 * &lt;select id="myId" />
+     *     &lt;option value="1">some text label&lt;/option>
+	 *
+	 * cabral.select('#myId', 'some text label');
+	 */
+	this.select = function(selector, label){
+		var $ = getWin().$;
+		var els = $(selector);
+		for (var i = 0; i < els.length; i++) {
+			var options = $(els[i]).find('option');
+			for (var j = 0; j < options.length; j++) {
+				if($(options[j]).text() == label){
+					$(els[i]).val($(options[j]).attr('value'));
+					break;
+				}
+			}
+			fireEvent(els[i], 'change');
+			fireEvent(els[i], 'click');
+		};
+		return this;	
+	}
 }
 
 var browser = new Cabral();
