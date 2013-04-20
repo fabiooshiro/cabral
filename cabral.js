@@ -255,6 +255,16 @@ var Cabral = function(){
 		return this;
 	}
 
+	/**
+	 * Choose a select value by option text/label
+	 * @param {string} selector jQuery selector
+	 * @param {string} label/text option text
+	 * @example
+	 * &lt;select id="myId" />
+     *     &lt;option value="1">some text label&lt;/option>
+	 *
+	 * cabral.select('#myId', 'some text label');
+	 */
 	this.select = function(selector, label){
 		var $ = getWin().$;
 		var els = $(selector);
